@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <base href="http://projects.localhost/kindcms/web/" />
+    <link href="assets/css/style.css" rel="stylesheet"/>
+    <title>Home</title>
+</head>
+<body>
+<header>
+    <h1>Home</h1>
+</header>
+{% for article in articles %}
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content }}</p>
+    </article>
+{% endfor %}
+<footer class="footer">
+    <p>Septembre 2017 - Itération 5</p>
+</footer>
+</body>
+</html>
