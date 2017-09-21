@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8"/>
     <base href="http://projects.localhost/kindcms/web/" />
-    <link href="assets/css/style.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css')  }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
     <title>Home</title>
 </head>
 <body>
-<header>
-    <h1>Home</h1>
-</header>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">MicroCMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-target">
+            </div>
+        </div><!-- /.container -->
+    </nav>
 {% for article in articles %}
     <article>
         <h2>{{ article.title }}</h2>
