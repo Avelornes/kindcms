@@ -10,8 +10,23 @@ class CommentDAO extends DAO {
 	 */
 	private $articleDAO;
 
+	/**
+	 * @var \kindcms\DAO\UserDAO
+	 */
+	private $userDAO;
+
+	/**
+	 * @param ArticleDAO $articleDAO
+	 */
 	public function setArticleDAO( ArticleDAO $articleDAO ) {
 		$this->articleDAO = $articleDAO;
+	}
+
+	/**
+	 * @param UserDAO $userDAO
+	 */
+	public function setUserDAO( $userDAO ) {
+		$this->userDAO = $userDAO;
 	}
 
 	/**
@@ -54,13 +69,18 @@ class CommentDAO extends DAO {
 		$comment = new Comment();
 		$comment->setId( $row['com_id'] );
 		$comment->setContent( $row['com_content'] );
-		$comment->setAuthor( $row['com_author'] );
 
 		if ( array_key_exists( 'art_id', $row ) ) {
 			// Find and set the associated article
 			$articleId = $row['art_id'];
 			$article   = $this->articleDAO->find( $articleId );
 			$comment->setArticle( $article );
+		}
+		if (array_key_exists('usr_id', $row)) {
+			//Find and set the associated author
+			$userId = $row['usr_id'];
+			$user = $this->userDAO->find($userId);
+			$comment->setAuthor($user);
 		}
 
 		return $comment;
