@@ -65,22 +65,4 @@ class CommentDAO extends DAO {
 
 		return $comment;
 	}
-
-	/**
-	 * Returns an article matching the supplied id.
-	 *
-	 * @param integer $id
-	 *
-	 * @return \kindcms\Domain\Article|throws an exception if no matching article is found
-	 */
-	public function find( $id ) {
-		$sql = 'SELECT * FROM t_article WHERE art_id=?';
-		$row = $this->getDb()->fetchAssoc( $sql, array( $id ) );
-
-		if ( $row ) {
-			return $this->buildDomainObject( $row );
-		} else {
-			throw new \Exception( "No article matching id " . $id );
-		}
-	}
 }
