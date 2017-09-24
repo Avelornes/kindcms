@@ -13,7 +13,7 @@ class Comment {
 	/**
 	 * Comment author.
 	 *
-	 * @var string
+	 * @var \kindcms\Domain\User
 	 */
 	private $author;
 
