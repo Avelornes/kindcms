@@ -20,3 +20,9 @@ $app->register( new Silex\Provider\AssetServiceProvider(), array(
 $app['dao.article'] = function ( $app ) {
 	return new kindcms\DAO\ArticleDAO( $app['db'] );
 };
+$app['dao.comment'] = function ( $app ) {
+	$commentDAO = new kindcms\DAO\CommentDAO( $app['db'] );
+	$commentDAO->setArticleDAO( $app['dao.article'] );
+
+	return $commentDAO;
+};
