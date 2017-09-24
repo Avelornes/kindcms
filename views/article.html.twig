@@ -1,47 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <base href="http://projects.localhost/kindcms/web/"/>
-    <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
-    <title>KindCMS - {{ article.title }}</title>
-</head>
-<body>
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#navbar-collapse-target">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="">KindCMS</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-target">
-            </div>
-        </div>
-    </nav>
-</div>
-<!-- Affichage d'un article -->
-<article>
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
     <h2>{{ article.title }}</h2>
     <p>{{ article.content }}</p>
-</article>
-<!-- Affichage des commentaires -->
-<h3>Commentaires</h3>
-{% for comment in comments %}
-<p>
-    <strong>{{  comment.author }}</strong> said : {{ comment.content }}
-    <!-- Si aucun comment, affichage d'un message d'erreur -->
+    <h3>Comments</h3>
+    {% for comment in comments %}
+        <p>
+        <strong>{{ comment.author }}</strong> said : {{ comment.content }}<br>
     {% else %}
-        Aucun commentaire. En écrire un ?
+        Aucun commentaire. En laisser un ?
     {% endfor %}
-</p>
-<footer class="footer">
-    <p>Septembre 2017 - Itération 7</p>
-</footer>
-</body>
-</html>
+    </p>
+{% endblock %}
